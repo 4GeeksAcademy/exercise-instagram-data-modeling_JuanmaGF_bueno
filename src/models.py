@@ -17,9 +17,7 @@ class User(Base):
     lastName = Column(String(250), nullable=False)
     email = Column(String(250), unique=True)
 
-    def to_dict(self):
-        return {}
-    
+   
 class Post(Base):
     __tablename__ = 'post'
     # Here we define columns for the table address.
@@ -27,8 +25,6 @@ class Post(Base):
     id = Column(Integer,primary_key=True)
     user_id= Column(Integer, ForeignKey('user.id'))
 
-    def to_dict(self):
-        return {}
     
 class Media(Base):
     __tablename__ = 'media'
@@ -39,18 +35,16 @@ class Media(Base):
     url = Column(String(250), nullable=False)
     post_id = Column(Integer, ForeignKey('post.id'))
 
-    def to_dict(self):
-        return {}
+    
     
 class Follower(Base):
     __tablename__ = 'follower'
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
+    id = Column(Integer, primary_key=True)
     user_from_id = Column(Integer, ForeignKey('user.id'))
     user_to_id = Column(Integer, ForeignKey('user.id'))
 
-    def to_dict(self):
-        return {}
 
 class Comment(Base):
     __tablename__ = 'comment'
